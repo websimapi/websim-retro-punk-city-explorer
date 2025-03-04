@@ -99,12 +99,14 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: all 0.1s;
 }
 
 .building {
   position: absolute;
   background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
   border: 2px solid #30475e;
+  transition: transform 0.2s ease-out;
 }
 
 .window {
@@ -119,6 +121,7 @@ h1 {
   font-weight: bold;
   text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff;
   animation: neon-flicker 2s infinite alternate;
+  transition: transform 0.2s ease-out;
 }
 
 .road {
@@ -147,3 +150,64 @@ h1 {
   font-size: 14px;
 }
 
+#audio-visualizer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 200px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border: 1px solid #ff00ff;
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-end;
+  padding: 2px;
+  gap: 1px;
+  z-index: 5;
+}
+
+.visualizer-bar {
+  flex: 1;
+  background-color: #00ffff;
+  height: 5px;
+  transition: height 0.05s ease;
+}
+
+.beat-pulse {
+  animation: beat-pulse 0.5s ease-out;
+}
+
+@keyframes beat-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.street-lamp {
+  position: absolute;
+  width: 5px;
+  height: 40px;
+  background-color: #444;
+}
+
+.lamp-light {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ffcc00;
+  box-shadow: 0 0 20px #ffcc00;
+  top: -10px;
+  left: -7.5px;
+  animation: light-flicker 4s infinite alternate;
+}
+
+@keyframes light-flicker {
+  0%, 80%, 100% { opacity: 1; }
+  85% { opacity: 0.6; }
+}
+
+.hover-glow {
+  filter: brightness(1.5);
+  transform: scale(1.05);
+}
